@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byron Busby | Cybersecurity Executive</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #132240;
+    --steel: #1E3A5F;
+    --accent: #C9A84C;
+    --accent-light: #E8C87A;
+    --text-light: #F0EDE6;
+    --text-muted: #9AAFC7;
+    --white: #FFFFFF;
+    --surface: #F7F5F0;
+    --border: rgba(201,168,76,0.25);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px 2rem 60px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, var(--steel) 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 32px; height: 1px; background: var(--accent);
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 700; line-height: 1.1;
+    color: var(--white); margin-bottom: 1.2rem;
+  }
+  h1 span { color: var(--accent); }
+  .hero-tagline {
+    font-size: 1.1rem; color: var(--text-muted);
+    max-width: 500px; margin-bottom: 2.5rem; line-height: 1.8;
+  }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-bottom: 2.5rem;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--navy);
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 600; font-size: 0.85rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text-light);
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 500; font-size: 0.85rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* PHOTO */
+  .photo-wrap {
+    position: relative; display: flex; justify-content: center;
+  }
+  .photo-frame {
+    width: 320px; height: 380px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative; z-index: 1;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  }
+  .photo-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    filter: contrast(1.05) brightness(1.02);
+  }
+  .photo-frame::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(10,22,40,0.4) 100%);
+    pointer-events: none;
+  }
+  .photo-accent {
+    position: absolute;
+    top: 20px; right: -20px;
+    width: 320px; height: 380px;
+    border: 1px solid var(--border);
+    border-radius: 4px; z-index: 0;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.8rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700; color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .divider {
+    width: 48px; height: 2px; background: var(--accent); margin-bottom: 3rem;
+  }
+
+  /* EXPERTISE */
+  #expertise { background: var(--navy-mid); }
+  .expertise-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5px; background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 2px; overflow: hidden;
+  }
+  .expertise-item {
+    background: var(--navy-mid);
+    padding: 1.75rem 1.5rem;
+    transition: background 0.2s;
+  }
+  .expertise-item:hover { background: var(--steel); }
+  .expertise-icon {
+    font-size: 1.5rem; margin-bottom: 0.75rem;
+  }
+  .expertise-title {
+    font-size: 0.9rem; font-weight: 600; color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .expertise-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* EXPERIENCE */
+  #experience { background: var(--navy); }
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item {
+    padding-left: 2rem; margin-bottom: 3rem; position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -4px; top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 50%; background: var(--accent);
+    border: 1px solid var(--navy);
+  }
+  .job-header { margin-bottom: 0.75rem; }
+  .job-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 600; color: var(--white);
+  }
+  .job-meta {
+    font-size: 0.82rem; color: var(--accent); margin-top: 0.2rem;
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .job-bullets { list-style: none; margin-top: 0.75rem; }
+  .job-bullets li {
+    font-size: 0.88rem; color: var(--text-muted);
+    padding-left: 1rem; position: relative; margin-bottom: 0.4rem; line-height: 1.6;
+  }
+  .job-bullets li::before {
+    content: '–'; position: absolute; left: 0; color: var(--accent);
+  }
+
+  /* EDUCATION & CERTS */
+  #credentials { background: var(--navy-mid); }
+  .creds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .cred-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--accent);
+    margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-item { margin-bottom: 1.5rem; }
+  .edu-degree { font-size: 0.95rem; font-weight: 600; color: var(--white); }
+  .edu-school { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem; }
+  .edu-year { font-size: 0.75rem; color: var(--accent); margin-top: 0.2rem; }
+  .cert-list { list-style: none; }
+  .cert-list li {
+    font-size: 0.88rem; color: var(--text-muted);
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .cert-list li::before {
+    content: '◆'; font-size: 0.5rem; color: var(--accent); flex-shrink: 0;
+  }
+
+  /* LINKS */
+  #links { background: var(--navy); }
+  .links-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .link-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+    display: block;
+  }
+  .link-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .link-card-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+  .link-card-title { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem; }
+  .link-card-desc { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* CONTACT */
+  #contact { background: var(--navy-mid); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-info p {
+    font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.8;
+  }
+  .contact-detail {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;
+  }
+  .contact-detail-icon {
+    width: 40px; height: 40px; background: var(--steel);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-detail-text a, .contact-detail-text span {
+    font-size: 0.9rem; color: var(--text-light); text-decoration: none;
+  }
+  .contact-detail-text a:hover { color: var(--accent); }
+  .contact-detail-label { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+  .form-group input, .form-group textarea, .form-group select {
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 12px 14px;
+    color: var(--text-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+  .form-group textarea { min-height: 120px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  footer p { font-size: 0.8rem; color: var(--text-muted); }
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--accent);
+    margin-bottom: 0.5rem; display: block;
+  }
+
+  /* ORG CARDS */
+  .org-card {
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    display: flex; align-items: center; gap: 1.25rem;
+    padding: 1.25rem;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .org-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .org-logo {
+    width: 72px; height: 72px; flex-shrink: 0;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .org-body { flex: 1; min-width: 0; }
+  .org-name { font-size: 0.9rem; font-weight: 600; color: var(--white); line-height: 1.3; margin-bottom: 0.3rem; }
+  .org-role { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem; }
+  .org-period { font-size: 0.72rem; color: var(--accent); font-weight: 500; }
+
+  /* RESPONSIVE */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+  .hamburger span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--text-light);
+    transition: transform 0.25s, opacity 0.2s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0; right: 0;
+    background: rgba(10,22,40,0.99);
+    border-bottom: 1px solid var(--border);
+    z-index: 99;
+    padding: 1.25rem 1.5rem 1.5rem;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-nav-overlay.open { display: flex; }
+  .mobile-nav-overlay a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+  }
+  .mobile-nav-overlay a:last-child { border-bottom: none; }
+  .mobile-nav-overlay a:hover { color: var(--accent); }
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .photo-wrap { order: -1; }
+    .photo-frame { width: 240px; height: 280px; }
+    .photo-accent { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .creds-grid, .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#home">Byron Busby</a>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#credentials">Education</a></li>
+    <li><a href="#links">Links</a></li>
+    <li><a href="#orgs">Organizations</a></li>
+    <li><a href="video-directory.html">Thank You's</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav-overlay" id="mobileNav">
+  <a href="#expertise"   onclick="closeMenu()">Expertise</a>
+  <a href="#experience"  onclick="closeMenu()">Experience</a>
+  <a href="#credentials" onclick="closeMenu()">Education</a>
+  <a href="#links"       onclick="closeMenu()">Links</a>
+  <a href="#orgs"        onclick="closeMenu()">Organizations</a>
+  <a href="video-directory.html">Thank You's</a>
+  <a href="#contact"     onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Cybersecurity &amp; IT Governance Executive</div>
+      <h1>Byron <span>Busby</span></h1>
+      <p class="hero-tagline">
+        25+ years leading enterprise cybersecurity strategy, IT governance, and digital transformation across global financial services and technology organizations.
+      </p>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">25+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="stat-num">VP</div>
+          <div class="stat-label">Current Level</div>
+        </div>
+        <div>
+          <div class="stat-num">Ph.D</div>
+          <div class="stat-label">In Progress</div>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#experience" class="btn-primary">View Resume</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="photo-wrap">
+      <div class="photo-frame">
+        <img src="data:image/jpeg;base64,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" alt="Byron Busby – Cybersecurity Executive">
+      </div>
+      <div class="photo-accent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-inner">
+    <div class="section-label">Core Expertise</div>
+    <h2>Areas of Focus</h2>
+    <div class="divider"></div>
+    <div class="expertise-grid">
+      <div class="expertise-item">
+        <div class="expertise-icon">🛡️</div>
+        <div class="expertise-title">Cybersecurity Governance</div>
+        <div class="expertise-desc">Enterprise-wide security frameworks, Red Team testing governance, regulatory alignment and risk management.</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-icon">⚖️</div>
+        <div class="expertise-title">GRC &amp; Compliance</div>
+        <div class="expertise-desc">SOC 2, IAM governance, policy frameworks, and enterprise risk controls that enable sustainable value.</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-icon">🔄</div>
+        <div class="expertise-title">Digital Transformation</div>
+        <div class="expertise-desc">Leading cross-functional global initiatives and technology portfolio modernization at scale.</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-icon">🏗️</div>
+        <div class="expertise-title">IT Strategy &amp; Architecture</div>
+        <div class="expertise-desc">Aligning technology strategy with business priorities, vendor governance, and IT financial planning.</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-icon">🔐</div>
+        <div class="expertise-title">Identity &amp; Access Mgmt</div>
+        <div class="expertise-desc">Global IAM transformation, cloud adoption security, privileged access risk reduction.</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-icon">🎓</div>
+        <div class="expertise-title">Education &amp; Mentorship</div>
+        <div class="expertise-desc">Teaching cybersecurity governance and enterprise IT at the college level; bridging theory and practice.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">Professional Experience</div>
+    <h2>Career History</h2>
+    <div class="divider"></div>
+    <div style="display:flex; justify-content:flex-end; margin-bottom:2rem;">
+      <a href="#" class="btn-primary" style="font-size:0.8rem; padding:10px 24px;" id="resumeDownloadBtn">⬇ Download Resume</a>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Vice President, CSO Red Team Governance</div>
+          <div class="job-meta">
+            <span>Citi · Irving, TX</span>
+            <span>Jan 2024 – Present</span>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Directs enterprise Red Team testing operations simulating real-world cyber threats across critical global systems.</li>
+          <li>Partners with cybersecurity, risk, legal, and compliance leadership to align testing strategy with regulatory expectations.</li>
+          <li>Translates technical findings into executive-level risk insights and recommendations for senior leadership.</li>
+          <li>Maintains strategic testing roadmap aligned with enterprise cybersecurity priorities and regulatory guidance.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Adjunct Professor</div>
+          <div class="job-meta">
+            <span>Tarrant County College District · Fort Worth, TX</span>
+            <span>Mar 2024 – Present</span>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Teaches cybersecurity governance, risk management, and enterprise IT operations.</li>
+          <li>Develops course content connecting academic theory to real-world enterprise IT governance practices.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Director of IT</div>
+          <div class="job-meta">
+            <span>Bottle Rocket (Ogilvy) · Addison, TX</span>
+            <span>Feb 2023 – Jan 2024</span>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Led enterprise IT strategy and operations for a high-growth digital consultancy serving Fortune-level clients.</li>
+          <li>Delivered $400K in IT budget optimization through strategic vendor negotiation and cost governance.</li>
+          <li>Implemented cybersecurity practices aligned with regulatory and data protection standards.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Director, DevSecOps</div>
+          <div class="job-meta">
+            <span>Bottle Rocket (Ogilvy) · Addison, TX</span>
+            <span>Jul 2021 – Feb 2023</span>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Established the organization's SOC 2 governance program, achieving SOC 2 Type 1 certification.</li>
+          <li>Built DevSecOps frameworks integrating security into CI/CD pipelines across development teams.</li>
+          <li>Strengthened enterprise risk posture through improved application security practices.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Vice President, IAM Governance</div>
+          <div class="job-meta">
+            <span>Citi · Irving, TX</span>
+            <span>Nov 2018 – Jul 2021</span>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Led global IAM transformation initiatives supporting cloud adoption and enterprise security modernization.</li>
+          <li>Reduced privileged access risk by 30% through enhanced governance controls and security policies.</li>
+          <li>Increased compliance participation by 40% through global awareness programs.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Senior Tax Technology Systems Analyst</div>
+          <div class="job-meta">
+            <span>KPMG · Dallas, TX</span>
+            <span>Nov 2006 – Oct 2018</span>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Senior technical advisor for large-scale enterprise platforms supporting Fortune 100 and 500 clients.</li>
+          <li>Led root cause analysis initiatives that improved system reliability and user productivity.</li>
+          <li>Worked closely with development teams to enhance enterprise systems through SDLC-driven improvements.</li>
+        </ul>
+      </div>
+
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">IT Analyst</div>
+          <div class="job-meta">
+            <span>Computer Sciences Corporation (CSC) · Las Colinas, TX</span>
+            <span>Feb 2005 – Nov 2006</span>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Provided technical support for various client accounts using problem determination and analysis techniques.</li>
+          <li>Served as on-site technical trainer, Subject Matter Expert (SME), and business analyst between CSC and distinct business clients to negotiate SLAs.</li>
+          <li>Traveled to client locations to administer account migration and rehabilitation while assessing support team performance goals.</li>
+          <li><strong>2006:</strong> Strengthened and renewed confidence with a high-profile client approaching contract re-negotiations, resulting in a renewed 5-year government contract.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">IT Helpdesk Analyst</div>
+          <div class="job-meta">
+            <span>Accor North America · Addison, TX</span>
+            <span>May 2004 – Feb 2005</span>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Utilized problem determination and analysis techniques to address end-user PC and peripheral concerns for front desk and back-office mainframe computers.</li>
+          <li>Communicated technical troubleshooting logic to non-IT personnel across global property management systems.</li>
+          <li>Recorded, responded to, and resolved customer issues with various global property management systems.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Facility Intern</div>
+          <div class="job-meta">
+            <span>Allstate Insurance Company · Irving, TX</span>
+            <span>Jun 2001 – Aug 2001</span>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Created a Visual Basic barcode scanning program for automatic data population, minimizing manual data entry.</li>
+          <li>Modified Excel spreadsheets to analyze annual document volumes processed by claims receivers.</li>
+          <li>Built and wired a new training room to teach Input Accel processes using Visual Basic.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-title">Technical Associate</div>
+          <div class="job-meta">
+            <span>Blue Chip Computers · Duncanville, TX</span>
+            <span>Dec 1997 – Sep 1998</span>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Designed, built, repaired, and upgraded customer PCs while providing sales and marketing support.</li>
+          <li>Worked closely with customers to ensure client satisfaction based on individual technical needs.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="section-inner">
+    <div class="section-label">Credentials</div>
+    <h2>Education &amp; Certifications</h2>
+    <div class="divider"></div>
+    <div class="creds-grid">
+      <div class="cred-block">
+        <h3>Education</h3>
+        <div class="edu-item">
+          <div class="edu-degree">Ph.D. – Information Systems &amp; Enterprise Resource Management</div>
+          <div class="edu-school">California Intercontinental University</div>
+          <div class="edu-year">Expected August 2026</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">M.S. – Cybersecurity</div>
+          <div class="edu-school">University of Dallas</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">B.A. – Communication Technology</div>
+          <div class="edu-school">University of Texas at Arlington</div>
+          <div class="edu-year">Minor: Mathematics</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">A.S. – Computer Information Systems</div>
+          <div class="edu-school">Mountain View College</div>
+        </div>
+      </div>
+      <div class="cred-block">
+        <h3>Certifications</h3>
+        <ul class="cert-list">
+          <li>ISC² Certified in Cybersecurity</li>
+          <li>AWS Certified Cloud Practitioner — July 2021</li>
+          <li>AWS Academy Graduate — December 2021</li>
+          <li>Certified SAFe 5 Agilist — November 2021</li>
+          <li>Leading Ethical Change — February 2019</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINKS -->
+<section id="links">
+  <div class="section-inner">
+    <div class="section-label">Professional Presence</div>
+    <h2>Find Me Online</h2>
+    <div class="divider"></div>
+    <div class="links-grid">
+      <a href="https://www.linkedin.com/in/byronbusby/" target="_blank" class="link-card">
+        <div class="link-card-icon">💼</div>
+        <div class="link-card-title">LinkedIn</div>
+        <div class="link-card-desc">Professional profile, endorsements &amp; network</div>
+      </a>
+      <a href="#experience" class="link-card">
+        <div class="link-card-icon">📄</div>
+        <div class="link-card-title">Resume / CV</div>
+        <div class="link-card-desc">Full career history and downloadable PDF</div>
+      </a>
+      <a href="#" class="link-card" id="publicationsLink">
+        <div class="link-card-icon">📚</div>
+        <div class="link-card-title">Publications</div>
+        <div class="link-card-desc">Research, papers &amp; academic contributions</div>
+      </a>
+      <a href="#orgs" class="link-card">
+        <div class="link-card-icon">🏛️</div>
+        <div class="link-card-title">Organizations</div>
+        <div class="link-card-desc">NABA, NSBE, ISACA, ISSA &amp; more</div>
+      </a>
+      <a href="#" class="link-card" id="orcidLink">
+        <div class="link-card-icon">🔬</div>
+        <div class="link-card-title">ORCID / ResearchGate</div>
+        <div class="link-card-desc">Academic identity and research metrics</div>
+      </a>
+      <a href="#contact" class="link-card">
+        <div class="link-card-icon">✉️</div>
+        <div class="link-card-title">Contact</div>
+        <div class="link-card-desc">Send a message or connect directly</div>
+      </a>
+      <a href="video-directory.html" class="link-card">
+        <div class="link-card-icon">🎬</div>
+        <div class="link-card-title">Thank You's</div>
+        <div class="link-card-desc">Personal thank you videos for guests &amp; supporters</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZATIONS -->
+<section id="orgs" style="background: var(--steel);">
+  <div class="section-inner">
+    <div class="section-label">Affiliations &amp; Memberships</div>
+    <h2>Professional Organizations</h2>
+    <div class="divider"></div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem;">
+
+      <a href="https://nabainc.org" target="_blank" class="org-card">
+        <div class="org-logo" style="background:#1A3A6B;">
+          <span style="color:#FFD700; font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; letter-spacing:0.05em;">NABA</span>
+        </div>
+        <div class="org-body">
+          <div class="org-name">National Association of Black Accountants</div>
+          <div class="org-role">Member &amp; DFW Chapter Board Member (Social Media Coordinator)</div>
+          <div class="org-period">2010 – Present</div>
+        </div>
+      </a>
+
+      <a href="https://nsbe.org" target="_blank" class="org-card">
+        <div class="org-logo" style="background:#006400;">
+          <span style="color:#FFFFFF; font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; letter-spacing:0.05em;">NSBE</span>
+        </div>
+        <div class="org-body">
+          <div class="org-name">National Society of Black Engineers</div>
+          <div class="org-role">Member &amp; National Delegate</div>
+          <div class="org-period">1998 – 2006</div>
+        </div>
+      </a>
+
+      <a href="https://www.isaca.org" target="_blank" class="org-card">
+        <div class="org-logo" style="background:#002855;">
+          <span style="color:#00A3E0; font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; letter-spacing:0.06em;">ISACA</span>
+        </div>
+        <div class="org-body">
+          <div class="org-name">Information Systems Audit &amp; Control Association</div>
+          <div class="org-role">Member</div>
+          <div class="org-period">2018 – Present</div>
+        </div>
+      </a>
+
+      <a href="https://www.issa.org" target="_blank" class="org-card">
+        <div class="org-logo" style="background:#003366;">
+          <span style="color:#E8C84A; font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; letter-spacing:0.06em;">ISSA</span>
+        </div>
+        <div class="org-body">
+          <div class="org-name">Information Systems Security Association</div>
+          <div class="org-role">Member</div>
+          <div class="org-period">2018 – Present</div>
+        </div>
+      </a>
+
+      <a href="https://www.nbmbaa.org" target="_blank" class="org-card">
+        <div class="org-logo" style="background:#8B0000;">
+          <span style="color:#FFFFFF; font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; letter-spacing:0.03em;">NBMBAA</span>
+        </div>
+        <div class="org-body">
+          <div class="org-name">National Black MBA Association</div>
+          <div class="org-role">Member</div>
+          <div class="org-period">2007 – 2008</div>
+        </div>
+      </a>
+
+      <a href="https://www.toastmasters.org" target="_blank" class="org-card">
+        <div class="org-logo" style="background:#990000;">
+          <span style="color:#FFFFFF; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; letter-spacing:0.03em; text-align:center; display:block;">TOAST<br>MASTERS</span>
+        </div>
+        <div class="org-body">
+          <div class="org-name">Toastmasters International</div>
+          <div class="org-role">VP, Public Relations</div>
+          <div class="org-period">2017 – 2018</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2>Contact</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>I'm open to executive cybersecurity consulting, speaking engagements, academic collaborations, and select advisory roles. Feel free to reach out.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">✉️</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-text"><a href="mailto:b_busby@yahoo.com">b_busby@yahoo.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div>
+            <div class="contact-detail-label">Phone</div>
+            <div class="contact-detail-text"><a href="tel:2146627736">214-662-7736</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-text"><span>Dallas, TX · Open to Hybrid</span></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">💼</div>
+          <div>
+            <div class="contact-detail-label">LinkedIn</div>
+            <div class="contact-detail-text"><a href="https://www.linkedin.com/in/byronbusby/" target="_blank">linkedin.com/in/byronbusby</a></div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Consulting Inquiry / Speaking / Other">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell me about your project or inquiry..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="align-self:flex-start;">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">Byron Busby</span>
+  <p>Cybersecurity Executive · Educator · Dallas, TX</p>
+  <p style="margin-top:0.5rem;">© 2025 Byron Busby · <a href="https://www.linkedin.com/in/byronbusby/" style="color:var(--accent); text-decoration:none;">LinkedIn</a></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  var btn = document.getElementById('hamburger');
+  var nav = document.getElementById('mobileNav');
+  btn.classList.toggle('open');
+  nav.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileNav').classList.remove('open');
+}
+window.addEventListener('scroll', closeMenu);
+</script>
+</body>
+</html>

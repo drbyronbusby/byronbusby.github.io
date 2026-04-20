@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Directory | byronbusby.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1628;--navy-mid:#132240;--steel:#1E3A5F;--accent:#C9A84C;--text-light:#F0EDE6;--text-muted:#9AAFC7;--white:#FFFFFF;--border:rgba(201,168,76,0.25);--overlay-bg:rgba(5,10,20,0.97);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--text-light);min-height:100vh;}
+nav{background:rgba(10,22,40,0.97);border-bottom:1px solid var(--border);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{font-family:'Playfair Display',serif;color:var(--accent);font-size:1.1rem;text-decoration:none;}
+.nav-back{font-size:.82rem;color:var(--text-muted);text-decoration:none;display:flex;align-items:center;gap:6px;border:1px solid var(--border);padding:7px 16px;border-radius:2px;transition:color .2s,border-color .2s;}
+.nav-back:hover{color:var(--accent);border-color:var(--accent);}
+.page-header{padding:3rem 2rem 1rem;max-width:1100px;margin:0 auto;}
+.page-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem;}
+.page-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
+h1{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--white);margin-bottom:.4rem;}
+.page-sub{font-size:.92rem;color:var(--text-muted);}
+.stats-bar{max-width:1100px;margin:0 auto;padding:.75rem 2rem 1.25rem;display:flex;gap:2.5rem;}
+.stat{font-size:.8rem;color:var(--text-muted);}.stat span{color:var(--accent);font-weight:500;}
+.alpha-nav{max-width:1100px;margin:0 auto;padding:0 2rem 1.5rem;display:flex;flex-wrap:wrap;gap:6px;}
+.alpha-btn{width:34px;height:34px;background:transparent;border:1px solid var(--border);border-radius:2px;color:var(--text-muted);font-size:.82rem;font-weight:500;cursor:pointer;transition:background .15s,color .15s,border-color .15s;font-family:'DM Sans',sans-serif;}
+.alpha-btn:hover{background:var(--steel);color:var(--accent);border-color:var(--accent);}
+.alpha-btn.active{color:var(--text-light);border-color:rgba(201,168,76,.5);}
+.alpha-btn.inactive{opacity:.2;cursor:default;pointer-events:none;}
+.directory{max-width:1100px;margin:0 auto;padding:0 2rem 5rem;}
+.letter-group{margin-bottom:2.5rem;}
+.letter-heading{font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--accent);padding-bottom:.5rem;border-bottom:1px solid var(--border);margin-bottom:1.2rem;display:flex;align-items:baseline;gap:.75rem;}
+.letter-count{font-size:.74rem;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-weight:400;}
+.name-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;}
+.name-btn{background:var(--navy-mid);border:1px solid var(--border);border-radius:2px;padding:.75rem 1rem;display:flex;align-items:center;gap:.75rem;cursor:pointer;transition:background .15s,border-color .15s,transform .1s;text-align:left;width:100%;font-family:'DM Sans',sans-serif;}
+.name-btn:hover{background:var(--steel);border-color:var(--accent);transform:translateY(-1px);}
+.name-btn:active{transform:translateY(0);}
+.name-avatar{width:38px;height:38px;border-radius:50%;background:var(--steel);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.77rem;font-weight:500;color:var(--accent);flex-shrink:0;}
+.name-label{font-size:.88rem;color:var(--text-light);line-height:1.35;}
+.name-sub{font-size:.73rem;color:var(--text-muted);margin-top:1px;}
+.play-icon{margin-left:auto;flex-shrink:0;width:22px;height:22px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.play-icon svg{width:8px;height:8px;fill:var(--accent);margin-left:1px;}
+.overlay{display:none;position:fixed;inset:0;z-index:999;background:var(--overlay-bg);align-items:center;justify-content:center;padding:1.5rem;}
+.overlay.active{display:flex;}
+.modal{background:var(--navy-mid);border:1px solid var(--border);border-radius:4px;width:100%;max-width:700px;overflow:hidden;}
+.modal-header{padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.modal-name{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--white);}
+.modal-sub{font-size:.78rem;color:var(--text-muted);margin-top:2px;}
+.cancel-btn{background:transparent;border:1px solid rgba(201,168,76,.4);border-radius:2px;color:var(--text-muted);font-size:.8rem;font-weight:500;padding:7px 18px;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;transition:color .15s,border-color .15s;white-space:nowrap;}
+.cancel-btn:hover{color:var(--accent);border-color:var(--accent);}
+.video-area{background:#000;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+video{width:100%;height:100%;object-fit:cover;display:none;position:absolute;inset:0;}
+.ph-content{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;width:100%;height:100%;padding:1.5rem;}
+.ph-icon{width:60px;height:60px;border-radius:50%;background:var(--steel);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;}
+.ph-icon svg{width:24px;height:24px;fill:var(--accent);margin-left:2px;}
+.ph-name{font-size:.88rem;color:var(--text-muted);text-align:center;line-height:1.5;}
+.ph-url{font-size:.7rem;color:rgba(201,168,76,.55);font-family:monospace;background:rgba(0,0,0,.45);padding:4px 10px;border-radius:2px;max-width:88%;word-break:break-all;text-align:center;}
+.modal-footer{padding:.875rem 1.25rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);}
+.progress-wrap{flex:1;height:3px;background:var(--steel);border-radius:2px;margin-right:1rem;overflow:hidden;}
+.progress-fill{height:100%;width:0%;background:var(--accent);transition:width .9s linear;border-radius:2px;}
+.timer-lbl{font-size:.75rem;color:var(--text-muted);min-width:75px;text-align:right;}
+.back-top{position:fixed;bottom:2rem;right:2rem;z-index:10;background:var(--accent);border:none;border-radius:2px;width:40px;height:40px;cursor:pointer;display:none;align-items:center;justify-content:center;}
+.back-top.show{display:flex;}
+.back-top svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+@media(max-width:600px){.name-grid{grid-template-columns:1fr 1fr;}h1{font-size:1.6rem;}.alpha-btn{width:28px;height:28px;font-size:.74rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Byron Busby</a>
+  <a class="nav-back" href="index.html">&#8592; Back to main site</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-eyebrow">Thank you video library</div>
+  <h1>Video directory</h1>
+  <p class="page-sub">Click any name to view their thank you video. Videos play 30&#8211;45 seconds, then return automatically.</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat">Guests: <span id="totalCount">73</span></div>
+  <div class="stat">Duration: <span>30&#8211;45 sec</span> each</div>
+  <div class="stat">Groups: <span id="groupCount">&#8212;</span></div>
+</div>
+
+<div class="alpha-nav" id="alphaNav"></div>
+<div class="directory" id="directory"></div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-sub">Thank you video</div>
+      </div>
+      <button class="cancel-btn" onclick="closeVideo()">
+        &#x2715;&nbsp; Cancel
+      </button>
+    </div>
+    <div class="video-area" id="videoArea">
+      <video id="videoEl" playsinline></video>
+      <div class="ph-content" id="phContent">
+        <div class="ph-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <p class="ph-name" id="phName"></p>
+        <p class="ph-url" id="phUrl"></p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="timer-lbl" id="timerLbl">0:40 remaining</div>
+    </div>
+  </div>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 16 16"><polyline points="3,11 8,5 13,11"/></svg>
+</button>
+
+<script>
+const people = [
+  {full:'Fernando Almanza',last:'Almanza',initials:'FA'},
+  {full:'Adrian & Jackie Anderson',last:'Anderson',initials:'AA'},
+  {full:'Helena Banks',last:'Banks',initials:'HB'},
+  {full:'Lajuana Barton',last:'Barton',initials:'LB'},
+  {full:'Douglas Baskin',last:'Baskin',initials:'DB'},
+  {full:'Linda Brown',last:'Brown',initials:'LB'},
+  {full:'Chuck Burch',last:'Burch',initials:'CB'},
+  {full:'Arthur & Ann Busby',last:'Busby',initials:'AB'},
+  {full:'Ayanna Busby',last:'Busby',initials:'AB'},
+  {full:'Chaunte Busby',last:'Busby',initials:'CB'},
+  {full:'Clarke Busby',last:'Busby',initials:'CB'},
+  {full:'Lincoln Busby',last:'Busby',initials:'LB'},
+  {full:'Parker Busby',last:'Busby',initials:'PB'},
+  {full:'Ray & Elijah Busby',last:'Busby',initials:'RB'},
+  {full:'Dawn Butler',last:'Butler',initials:'DB'},
+  {full:'Suzanne Cherry',last:'Cherry',initials:'SC'},
+  {full:'Corn & Cherawn Childress',last:'Childress',initials:'CC'},
+  {full:'Reggie Davis',last:'Davis',initials:'RD'},
+  {full:'Mrs. Durham',last:'Durham',initials:'MD'},
+  {full:'Herb Finnen',last:'Finnen',initials:'HF'},
+  {full:'Roy & Glenda Fuller',last:'Fuller',initials:'RF'},
+  {full:'Wilson Gafney',last:'Gafney',initials:'WG'},
+  {full:'Paul Garrett',last:'Garrett',initials:'PG'},
+  {full:'Ozell Graham',last:'Graham',initials:'OG'},
+  {full:'Angele Gulley',last:'Gulley',initials:'AG'},
+  {full:'Dr. Kendall Harris',last:'Harris',initials:'DH'},
+  {full:'David & Sharon Harrison',last:'Harrison',initials:'DH'},
+  {full:'Scott Hays',last:'Hays',initials:'SH'},
+  {full:'Dominique Hilliard',last:'Hilliard',initials:'DH'},
+  {full:'Sabrina Hodge',last:'Hodge',initials:'SH'},
+  {full:'Matt Houston',last:'Houston',initials:'MH'},
+  {full:'Millie Jackson',last:'Jackson',initials:'MJ'},
+  {full:'Al & Lena Johnson',last:'Johnson',initials:'AJ'},
+  {full:'Law & Angel Johnson',last:'Johnson',initials:'LJ'},
+  {full:'Terrance & Brooke Jones',last:'Jones',initials:'TJ'},
+  {full:'Mike Kelly',last:'Kelly',initials:'MK'},
+  {full:'Ed & Lynn Konop',last:'Konop',initials:'EK'},
+  {full:'Dorothy Long',last:'Long',initials:'DL'},
+  {full:'Jessica Long',last:'Long',initials:'JL'},
+  {full:'Doretha McCoy',last:'McCoy',initials:'DM'},
+  {full:'Jerrilyn McElroy',last:'McElroy',initials:'JM'},
+  {full:'Josh Middleton',last:'Middleton',initials:'JM'},
+  {full:'Tomeka Middleton-Williams',last:'Middleton-Williams',initials:'TM'},
+  {full:'Linda Mims',last:'Mims',initials:'LM'},
+  {full:'Aminah Mosby',last:'Mosby',initials:'AM'},
+  {full:'Lena & Arin Mouton',last:'Mouton',initials:'LM'},
+  {full:'Al Nolan',last:'Nolan',initials:'AN'},
+  {full:'Kelvin Nunley',last:'Nunley',initials:'KN'},
+  {full:'Pauline Parish',last:'Parish',initials:'PP'},
+  {full:'Anthony & LaAndra Peterson',last:'Peterson',initials:'AP'},
+  {full:'Fred & Jennifer Peterson',last:'Peterson',initials:'FP'},
+  {full:'Will & Kiah Pettis',last:'Pettis',initials:'WP'},
+  {full:'Micah Pickens',last:'Pickens',initials:'MP'},
+  {full:'Glen Price',last:'Price',initials:'GP'},
+  {full:'Sam Putney',last:'Putney',initials:'SP'},
+  {full:'Beth Roberts',last:'Roberts',initials:'BR'},
+  {full:'Ted Sanders',last:'Sanders',initials:'TS'},
+  {full:'Gerald & Ingrid Scott',last:'Scott',initials:'GS'},
+  {full:'Floyd Smith',last:'Smith',initials:'FS'},
+  {full:'Marica Sterling',last:'Sterling',initials:'MS'},
+  {full:'Natalie Stimpson',last:'Stimpson',initials:'NS'},
+  {full:'Trina Terrell-Andrews',last:'Terrell-Andrews',initials:'TT'},
+  {full:'Tre Thompson',last:'Thompson',initials:'TT'},
+  {full:'Rocky Turner',last:'Turner',initials:'RT'},
+  {full:'Tonya Vaughn',last:'Vaughn',initials:'TV'},
+  {full:'Eric Washington',last:'Washington',initials:'EW'},
+  {full:'Erica Washington',last:'Washington',initials:'EW'},
+  {full:'Reuben & Marva Washington',last:'Washington',initials:'RW'},
+  {full:'Senator Royce West',last:'West',initials:'SW'},
+  {full:'Mario & Bianca White',last:'White',initials:'MW'},
+  {full:'Brendan Williams',last:'Williams',initials:'BW'},
+  {full:'Cathleen Williams',last:'Williams',initials:'CW'}
+];
+
+const grouped={};
+people.forEach(p=>{const l=p.last[0].toUpperCase();if(!grouped[l])grouped[l]=[];grouped[l].push(p);});
+const usedLetters=new Set(Object.keys(grouped));
+document.getElementById('groupCount').textContent=usedLetters.size;
+
+const alphaNav=document.getElementById('alphaNav');
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(letter=>{
+  const btn=document.createElement('button');
+  btn.className='alpha-btn '+(usedLetters.has(letter)?'active':'inactive');
+  btn.textContent=letter;
+  if(usedLetters.has(letter))btn.onclick=()=>{const el=document.getElementById('grp-'+letter);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});};
+  alphaNav.appendChild(btn);
+});
+
+const dir=document.getElementById('directory');
+Object.keys(grouped).sort().forEach(letter=>{
+  const grp=document.createElement('div');
+  grp.className='letter-group';grp.id='grp-'+letter;
+  const h=document.createElement('div');h.className='letter-heading';
+  const c=grouped[letter].length;
+  h.innerHTML=letter+'<span class="letter-count">'+c+' '+(c===1?'guest':'guests')+'</span>';
+  grp.appendChild(h);
+  const grid=document.createElement('div');grid.className='name-grid';
+  grouped[letter].forEach(person=>{
+    const slug=person.full.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'');
+    const btn=document.createElement('button');btn.className='name-btn';
+    btn.innerHTML='<div class="name-avatar">'+person.initials+'</div>'
+      +'<div style="flex:1;min-width:0;"><div class="name-label">'+person.full+'</div>'
+      +'<div class="name-sub">Click to view video</div></div>'
+      +'<div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></div>';
+    btn.onclick=()=>openVideo(person,slug);
+    grid.appendChild(btn);
+  });
+  grp.appendChild(grid);dir.appendChild(grp);
+});
+
+const DURATION=40;let elapsed=0,timer=null;
+
+function pad(n){return n<10?'0'+n:''+n;}
+
+function openVideo(person,slug){
+  document.getElementById('modalName').textContent=person.full;
+  document.getElementById('phName').textContent=person.full+' \u2014 thank you video';
+  document.getElementById('phUrl').textContent='Add video URL: https://yourvideo.com/'+slug+'.mp4';
+  document.getElementById('progressFill').style.width='0%';
+  document.getElementById('timerLbl').textContent='0:'+pad(DURATION)+' remaining';
+  document.getElementById('overlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  elapsed=0;clearInterval(timer);
+  const vid=document.getElementById('videoEl');
+  if(person.videoUrl){
+    vid.src=person.videoUrl;vid.style.display='block';
+    document.getElementById('phContent').style.display='none';
+    vid.play().catch(()=>{});
+    vid.onended=()=>closeVideo();
+  } else {
+    vid.style.display='none';
+    document.getElementById('phContent').style.display='flex';
+  }
+  timer=setInterval(()=>{
+    elapsed++;
+    const rem=Math.max(0,DURATION-elapsed);
+    document.getElementById('progressFill').style.width=Math.round((elapsed/DURATION)*100)+'%';
+    document.getElementById('timerLbl').textContent='0:'+pad(rem)+' remaining';
+    if(elapsed>=DURATION)closeVideo();
+  },1000);
+}
+
+function closeVideo(){
+  clearInterval(timer);
+  const vid=document.getElementById('videoEl');
+  vid.pause();vid.src='';vid.style.display='none';
+  document.getElementById('phContent').style.display='flex';
+  document.getElementById('overlay').classList.remove('active');
+  document.body.style.overflow='';
+  document.getElementById('progressFill').style.width='0%';
+}
+
+window.addEventListener('keydown',e=>{if(e.key==='Escape')closeVideo();});
+window.addEventListener('scroll',()=>{document.getElementById('backTop').classList.toggle('show',window.scrollY>400);});
+</script>
+</body>
+</html>
