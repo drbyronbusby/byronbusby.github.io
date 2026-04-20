@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0052)file:///Users/apple/Downloads/byronbusby_2.html#home -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Byron Busby | Cybersecurity Executive</title>
-<link href="./index_files/css2" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #0A1628;
@@ -19,7 +19,7 @@
     --border: rgba(201,168,76,0.25);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 68px; }
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--navy);
@@ -363,6 +363,53 @@
   .org-period { font-size: 0.72rem; color: var(--accent); font-weight: 500; }
 
   /* RESPONSIVE */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+  .hamburger span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--text-light);
+    transition: transform 0.25s, opacity 0.2s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0; right: 0;
+    background: rgba(10,22,40,0.99);
+    border-bottom: 1px solid var(--border);
+    z-index: 99;
+    padding: 1.25rem 1.5rem 1.5rem;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-nav-overlay.open { display: flex; }
+  .mobile-nav-overlay a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+  }
+  .mobile-nav-overlay a:last-child { border-bottom: none; }
+  .mobile-nav-overlay a:hover { color: var(--accent); }
   @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; }
     .photo-wrap { order: -1; }
@@ -372,24 +419,38 @@
     .creds-grid, .contact-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     nav { padding: 0 1rem; }
-    .nav-links { gap: 1rem; }
-    .nav-links a { font-size: 0.75rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-brand" href="file:///Users/apple/Downloads/byronbusby_2.html#home">Byron Busby</a>
+  <a class="nav-brand" href="#home">Byron Busby</a>
   <ul class="nav-links">
-    <li><a href="file:///Users/apple/Downloads/byronbusby_2.html#expertise">Expertise</a></li>
-    <li><a href="file:///Users/apple/Downloads/byronbusby_2.html#experience">Experience</a></li>
-    <li><a href="file:///Users/apple/Downloads/byronbusby_2.html#credentials">Education</a></li>
-    <li><a href="file:///Users/apple/Downloads/byronbusby_2.html#links">Links</a></li>
-    <li><a href="file:///Users/apple/Downloads/byronbusby_2.html#orgs">Organizations</a></li>
-    <li><a href="file:///Users/apple/Downloads/byronbusby_2.html#contact">Contact</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#credentials">Education</a></li>
+    <li><a href="#links">Links</a></li>
+    <li><a href="#orgs">Organizations</a></li>
+    <li><a href="video-directory.html">Thank You's</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-nav-overlay" id="mobileNav">
+  <a href="#expertise"   onclick="closeMenu()">Expertise</a>
+  <a href="#experience"  onclick="closeMenu()">Experience</a>
+  <a href="#credentials" onclick="closeMenu()">Education</a>
+  <a href="#links"       onclick="closeMenu()">Links</a>
+  <a href="#orgs"        onclick="closeMenu()">Organizations</a>
+  <a href="video-directory.html">Thank You's</a>
+  <a href="#contact"     onclick="closeMenu()">Contact</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -415,8 +476,8 @@
         </div>
       </div>
       <div class="hero-ctas">
-        <a href="file:///Users/apple/Downloads/byronbusby_2.html#experience" class="btn-primary">View Resume</a>
-        <a href="file:///Users/apple/Downloads/byronbusby_2.html#contact" class="btn-outline">Get In Touch</a>
+        <a href="#experience" class="btn-primary">View Resume</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
       </div>
     </div>
     <div class="photo-wrap">
@@ -476,7 +537,7 @@
     <h2>Career History</h2>
     <div class="divider"></div>
     <div style="display:flex; justify-content:flex-end; margin-bottom:2rem;">
-      <a href="file:///Users/apple/Downloads/byronbusby_2.html#" class="btn-primary" style="font-size:0.8rem; padding:10px 24px;" onclick="alert(&#39;To add resume download: upload your PDF to Wix Media and link it here.&#39;)">⬇ Download Resume</a>
+      <a href="#" class="btn-primary" style="font-size:0.8rem; padding:10px 24px;" id="resumeDownloadBtn">⬇ Download Resume</a>
     </div>
     <div class="timeline">
 
@@ -689,30 +750,35 @@
         <div class="link-card-title">LinkedIn</div>
         <div class="link-card-desc">Professional profile, endorsements &amp; network</div>
       </a>
-      <a href="file:///Users/apple/Downloads/byronbusby_2.html#experience" class="link-card">
+      <a href="#experience" class="link-card">
         <div class="link-card-icon">📄</div>
         <div class="link-card-title">Resume / CV</div>
         <div class="link-card-desc">Full career history and downloadable PDF</div>
       </a>
-      <a href="file:///Users/apple/Downloads/byronbusby_2.html#" class="link-card" onclick="alert(&#39;Add your Google Scholar or ResearchGate link here.&#39;)">
+      <a href="#" class="link-card" id="publicationsLink">
         <div class="link-card-icon">📚</div>
         <div class="link-card-title">Publications</div>
         <div class="link-card-desc">Research, papers &amp; academic contributions</div>
       </a>
-      <a href="file:///Users/apple/Downloads/byronbusby_2.html#orgs" class="link-card">
+      <a href="#orgs" class="link-card">
         <div class="link-card-icon">🏛️</div>
         <div class="link-card-title">Organizations</div>
         <div class="link-card-desc">NABA, NSBE, ISACA, ISSA &amp; more</div>
       </a>
-      <a href="file:///Users/apple/Downloads/byronbusby_2.html#" class="link-card" onclick="alert(&#39;Add your ORCID or ResearchGate profile here.&#39;)">
+      <a href="#" class="link-card" id="orcidLink">
         <div class="link-card-icon">🔬</div>
         <div class="link-card-title">ORCID / ResearchGate</div>
         <div class="link-card-desc">Academic identity and research metrics</div>
       </a>
-      <a href="file:///Users/apple/Downloads/byronbusby_2.html#contact" class="link-card">
+      <a href="#contact" class="link-card">
         <div class="link-card-icon">✉️</div>
         <div class="link-card-title">Contact</div>
         <div class="link-card-desc">Send a message or connect directly</div>
+      </a>
+      <a href="video-directory.html" class="link-card">
+        <div class="link-card-icon">🎬</div>
+        <div class="link-card-title">Thank You's</div>
+        <div class="link-card-desc">Personal thank you videos for guests &amp; supporters</div>
       </a>
     </div>
   </div>
@@ -726,9 +792,9 @@
     <div class="divider"></div>
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem;">
 
-      <a href="https://nabainc.org/" target="_blank" class="org-card">
+      <a href="https://nabainc.org" target="_blank" class="org-card">
         <div class="org-logo" style="background:#1A3A6B;">
-          <span style="color:#FFD700; font-family:&#39;Playfair Display&#39;,serif; font-size:1.4rem; font-weight:700; letter-spacing:0.05em;">NABA</span>
+          <span style="color:#FFD700; font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; letter-spacing:0.05em;">NABA</span>
         </div>
         <div class="org-body">
           <div class="org-name">National Association of Black Accountants</div>
@@ -737,9 +803,9 @@
         </div>
       </a>
 
-      <a href="https://nsbe.org/" target="_blank" class="org-card">
+      <a href="https://nsbe.org" target="_blank" class="org-card">
         <div class="org-logo" style="background:#006400;">
-          <span style="color:#FFFFFF; font-family:&#39;Playfair Display&#39;,serif; font-size:1.4rem; font-weight:700; letter-spacing:0.05em;">NSBE</span>
+          <span style="color:#FFFFFF; font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; letter-spacing:0.05em;">NSBE</span>
         </div>
         <div class="org-body">
           <div class="org-name">National Society of Black Engineers</div>
@@ -748,9 +814,9 @@
         </div>
       </a>
 
-      <a href="https://www.isaca.org/" target="_blank" class="org-card">
+      <a href="https://www.isaca.org" target="_blank" class="org-card">
         <div class="org-logo" style="background:#002855;">
-          <span style="color:#00A3E0; font-family:&#39;Playfair Display&#39;,serif; font-size:1.4rem; font-weight:700; letter-spacing:0.06em;">ISACA</span>
+          <span style="color:#00A3E0; font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; letter-spacing:0.06em;">ISACA</span>
         </div>
         <div class="org-body">
           <div class="org-name">Information Systems Audit &amp; Control Association</div>
@@ -759,9 +825,9 @@
         </div>
       </a>
 
-      <a href="https://www.issa.org/" target="_blank" class="org-card">
+      <a href="https://www.issa.org" target="_blank" class="org-card">
         <div class="org-logo" style="background:#003366;">
-          <span style="color:#E8C84A; font-family:&#39;Playfair Display&#39;,serif; font-size:1.4rem; font-weight:700; letter-spacing:0.06em;">ISSA</span>
+          <span style="color:#E8C84A; font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; letter-spacing:0.06em;">ISSA</span>
         </div>
         <div class="org-body">
           <div class="org-name">Information Systems Security Association</div>
@@ -770,9 +836,9 @@
         </div>
       </a>
 
-      <a href="https://www.nbmbaa.org/" target="_blank" class="org-card">
+      <a href="https://www.nbmbaa.org" target="_blank" class="org-card">
         <div class="org-logo" style="background:#8B0000;">
-          <span style="color:#FFFFFF; font-family:&#39;Playfair Display&#39;,serif; font-size:1.15rem; font-weight:700; letter-spacing:0.03em;">NBMBAA</span>
+          <span style="color:#FFFFFF; font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; letter-spacing:0.03em;">NBMBAA</span>
         </div>
         <div class="org-body">
           <div class="org-name">National Black MBA Association</div>
@@ -781,9 +847,9 @@
         </div>
       </a>
 
-      <a href="https://www.toastmasters.org/" target="_blank" class="org-card">
+      <a href="https://www.toastmasters.org" target="_blank" class="org-card">
         <div class="org-logo" style="background:#990000;">
-          <span style="color:#FFFFFF; font-family:&#39;Playfair Display&#39;,serif; font-size:0.95rem; font-weight:700; letter-spacing:0.03em; text-align:center; display:block;">TOAST<br>MASTERS</span>
+          <span style="color:#FFFFFF; font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; letter-spacing:0.03em; text-align:center; display:block;">TOAST<br>MASTERS</span>
         </div>
         <div class="org-body">
           <div class="org-name">Toastmasters International</div>
@@ -809,7 +875,7 @@
           <div class="contact-detail-icon">✉️</div>
           <div>
             <div class="contact-detail-label">Email</div>
-            <div class="contact-detail-text"><a href="file:///cdn-cgi/l/email-protection#c0a29fa2b5b3a2b980b9a1a8afafeea3afad"><span class="__cf_email__" data-cfemail="c9ab96abbcbaabb089b0a8a1a6a6e7aaa6a4">[email&nbsp;protected]</span></a></div>
+            <div class="contact-detail-text"><a href="mailto:b_busby@yahoo.com">b_busby@yahoo.com</a></div>
           </div>
         </div>
         <div class="contact-detail">
@@ -869,4 +935,18 @@
   <p style="margin-top:0.5rem;">© 2025 Byron Busby · <a href="https://www.linkedin.com/in/byronbusby/" style="color:var(--accent); text-decoration:none;">LinkedIn</a></p>
 </footer>
 
-</body></html>
+<script>
+function toggleMenu() {
+  var btn = document.getElementById('hamburger');
+  var nav = document.getElementById('mobileNav');
+  btn.classList.toggle('open');
+  nav.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileNav').classList.remove('open');
+}
+window.addEventListener('scroll', closeMenu);
+</script>
+</body>
+</html>
