@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0053)file:///Users/apple/Downloads/video-directory_11.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Video Directory | byronbusby.com</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="./Video Directory _ byronbusby.com_files/css2" rel="stylesheet">
 <style>
 :root{--navy:#0A1628;--navy-mid:#132240;--steel:#1E3A5F;--accent:#C9A84C;--text-light:#F0EDE6;--text-muted:#9AAFC7;--white:#FFFFFF;--border:rgba(201,168,76,0.25);--overlay-bg:rgba(5,10,20,0.97);}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
@@ -20,14 +21,15 @@ h1{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--white);marg
 .page-sub{font-size:.92rem;color:var(--text-muted);}
 .stats-bar{max-width:1100px;margin:0 auto;padding:.75rem 2rem 1.25rem;display:flex;gap:2.5rem;}
 .stat{font-size:.8rem;color:var(--text-muted);}.stat span{color:var(--accent);font-weight:500;}
+.alpha-instruction{max-width:1100px;margin:0 auto;padding:0 2rem 1rem;font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:600;color:var(--accent);line-height:1.2;}
 .alpha-nav{max-width:1100px;margin:0 auto;padding:0 2rem 1.5rem;display:flex;flex-wrap:wrap;gap:6px;}
 .alpha-btn{width:34px;height:34px;background:transparent;border:1px solid var(--border);border-radius:2px;color:var(--text-muted);font-size:.82rem;font-weight:500;cursor:pointer;transition:background .15s,color .15s,border-color .15s;font-family:'DM Sans',sans-serif;}
 .alpha-btn:hover{background:var(--steel);color:var(--accent);border-color:var(--accent);}
 .alpha-btn.active{color:var(--text-light);border-color:rgba(201,168,76,.5);}
 .alpha-btn.inactive{opacity:.2;cursor:default;pointer-events:none;}
 .directory{max-width:1100px;margin:0 auto;padding:0 2rem 5rem;}
-.letter-group{margin-bottom:2.5rem;}
-.letter-heading{font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--accent);padding-bottom:.5rem;border-bottom:1px solid var(--border);margin-bottom:1.2rem;display:flex;align-items:baseline;gap:.75rem;}
+.letter-group{margin-bottom:2rem;}.letter-heading{font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--accent);padding-bottom:.5rem;border-bottom:1px solid var(--border);margin-bottom:1.2rem;display:flex;align-items:baseline;gap:.75rem;}.letter-count{font-size:.74rem;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-weight:400;}
+
 .letter-count{font-size:.74rem;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-weight:400;}
 .name-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;}
 .name-btn{background:var(--navy-mid);border:1px solid var(--border);border-radius:2px;padding:.75rem 1rem;display:flex;align-items:center;gap:.75rem;cursor:pointer;transition:background .15s,border-color .15s,transform .1s;text-align:left;width:100%;font-family:'DM Sans',sans-serif;}
@@ -66,24 +68,23 @@ video{width:100%;height:100%;object-fit:cover;display:none;position:absolute;ins
 <body>
 
 <nav>
-  <a class="nav-brand" href="index.html">Byron Busby</a>
-  <a class="nav-back" href="index.html">&#8592; Back to main site</a>
+  <a class="nav-brand" href="https://byronbusby.github.io/">Byron Busby</a>
+  <a class="nav-back" href="https://byronbusby.github.io/">← Back to main site</a>
 </nav>
 
 <div class="page-header">
   <div class="page-eyebrow">Thank you video library</div>
-  <h1>Video directory</h1>
-  <p class="page-sub">Click any name to view their thank you video. Videos play 30&#8211;45 seconds, then return automatically.</p>
 </div>
 
 <div class="stats-bar">
   <div class="stat">Guests: <span id="totalCount">73</span></div>
-  <div class="stat">Duration: <span>30&#8211;45 sec</span> each</div>
-  <div class="stat">Groups: <span id="groupCount">&#8212;</span></div>
+  <div class="stat">Avg duration: <span id="avgDuration">0:40</span></div>
+  <div class="stat">Groups: <span id="groupCount">18</span></div>
 </div>
 
-<div class="alpha-nav" id="alphaNav"></div>
-<div class="directory" id="directory"></div>
+<div class="alpha-instruction">Touch the Letter of your Last Name</div>
+<div class="alpha-nav" id="alphaNav"><button class="alpha-btn active">A</button><button class="alpha-btn active">B</button><button class="alpha-btn active">C</button><button class="alpha-btn active">D</button><button class="alpha-btn inactive">E</button><button class="alpha-btn active">F</button><button class="alpha-btn active">G</button><button class="alpha-btn active">H</button><button class="alpha-btn inactive">I</button><button class="alpha-btn active">J</button><button class="alpha-btn active">K</button><button class="alpha-btn active">L</button><button class="alpha-btn active">M</button><button class="alpha-btn active">N</button><button class="alpha-btn inactive">O</button><button class="alpha-btn active">P</button><button class="alpha-btn inactive">Q</button><button class="alpha-btn active">R</button><button class="alpha-btn active">S</button><button class="alpha-btn active">T</button><button class="alpha-btn inactive">U</button><button class="alpha-btn active">V</button><button class="alpha-btn active">W</button><button class="alpha-btn inactive">X</button><button class="alpha-btn inactive">Y</button><button class="alpha-btn inactive">Z</button></div>
+<div class="directory" id="directory"><div class="letter-group" id="grp-A"><div class="letter-heading">A<span class="letter-count">2 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">FA</div><div style="flex:1;min-width:0;"><div class="name-label">Fernando Almanza</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">AA</div><div style="flex:1;min-width:0;"><div class="name-label">Adrian &amp; Jackie Anderson</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-B"><div class="letter-heading">B<span class="letter-count">13 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">HB</div><div style="flex:1;min-width:0;"><div class="name-label">Helena Banks</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">LB</div><div style="flex:1;min-width:0;"><div class="name-label">Lajuana Barton</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">DB</div><div style="flex:1;min-width:0;"><div class="name-label">Douglas Baskin</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">LB</div><div style="flex:1;min-width:0;"><div class="name-label">Linda Brown</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">CB</div><div style="flex:1;min-width:0;"><div class="name-label">Chuck Burch</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">AB</div><div style="flex:1;min-width:0;"><div class="name-label">Arthur &amp; Ann Busby</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">AB</div><div style="flex:1;min-width:0;"><div class="name-label">Ayanna Busby</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">CB</div><div style="flex:1;min-width:0;"><div class="name-label">Chaunte Busby</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">CB</div><div style="flex:1;min-width:0;"><div class="name-label">Clarke Busby</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">LB</div><div style="flex:1;min-width:0;"><div class="name-label">Lincoln Busby</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">PB</div><div style="flex:1;min-width:0;"><div class="name-label">Parker Busby</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">RB</div><div style="flex:1;min-width:0;"><div class="name-label">Ray &amp; Elijah Busby</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">DB</div><div style="flex:1;min-width:0;"><div class="name-label">Dawn Butler</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-C"><div class="letter-heading">C<span class="letter-count">2 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">SC</div><div style="flex:1;min-width:0;"><div class="name-label">Suzanne Cherry</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">CC</div><div style="flex:1;min-width:0;"><div class="name-label">Corn &amp; Cherawn Childress</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-D"><div class="letter-heading">D<span class="letter-count">2 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">RD</div><div style="flex:1;min-width:0;"><div class="name-label">Reggie Davis</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">MD</div><div style="flex:1;min-width:0;"><div class="name-label">Mrs. Durham</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-F"><div class="letter-heading">F<span class="letter-count">2 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">HF</div><div style="flex:1;min-width:0;"><div class="name-label">Herb Finnen</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">RF</div><div style="flex:1;min-width:0;"><div class="name-label">Roy &amp; Glenda Fuller</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-G"><div class="letter-heading">G<span class="letter-count">4 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">WG</div><div style="flex:1;min-width:0;"><div class="name-label">Wilson Gafney</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">PG</div><div style="flex:1;min-width:0;"><div class="name-label">Paul Garrett</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">OG</div><div style="flex:1;min-width:0;"><div class="name-label">Ozell Graham</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">AG</div><div style="flex:1;min-width:0;"><div class="name-label">Angele Gulley</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-H"><div class="letter-heading">H<span class="letter-count">6 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">DH</div><div style="flex:1;min-width:0;"><div class="name-label">Dr. Kendall Harris</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">DH</div><div style="flex:1;min-width:0;"><div class="name-label">David &amp; Sharon Harrison</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">SH</div><div style="flex:1;min-width:0;"><div class="name-label">Scott Hays</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">DH</div><div style="flex:1;min-width:0;"><div class="name-label">Dominique Hilliard</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">SH</div><div style="flex:1;min-width:0;"><div class="name-label">Sabrina Hodge</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">MH</div><div style="flex:1;min-width:0;"><div class="name-label">Matt Houston</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-J"><div class="letter-heading">J<span class="letter-count">4 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">MJ</div><div style="flex:1;min-width:0;"><div class="name-label">Millie Jackson</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">AJ</div><div style="flex:1;min-width:0;"><div class="name-label">Al &amp; Lena Johnson</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">LJ</div><div style="flex:1;min-width:0;"><div class="name-label">Law &amp; Angel Johnson</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">TJ</div><div style="flex:1;min-width:0;"><div class="name-label">Terrance &amp; Brooke Jones</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-K"><div class="letter-heading">K<span class="letter-count">2 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">MK</div><div style="flex:1;min-width:0;"><div class="name-label">Mike Kelly</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">EK</div><div style="flex:1;min-width:0;"><div class="name-label">Ed &amp; Lynn Konop</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-L"><div class="letter-heading">L<span class="letter-count">2 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">DL</div><div style="flex:1;min-width:0;"><div class="name-label">Dorothy Long</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">JL</div><div style="flex:1;min-width:0;"><div class="name-label">Jessica Long</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-M"><div class="letter-heading">M<span class="letter-count">7 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">DM</div><div style="flex:1;min-width:0;"><div class="name-label">Doretha McCoy</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">JM</div><div style="flex:1;min-width:0;"><div class="name-label">Jerrilyn McElroy</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">JM</div><div style="flex:1;min-width:0;"><div class="name-label">Josh Middleton</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">TM</div><div style="flex:1;min-width:0;"><div class="name-label">Tomeka Middleton-Williams</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">LM</div><div style="flex:1;min-width:0;"><div class="name-label">Linda Mims</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">AM</div><div style="flex:1;min-width:0;"><div class="name-label">Aminah Mosby</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">LM</div><div style="flex:1;min-width:0;"><div class="name-label">Lena &amp; Arin Mouton</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-N"><div class="letter-heading">N<span class="letter-count">2 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">AN</div><div style="flex:1;min-width:0;"><div class="name-label">Al Nolan</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">KN</div><div style="flex:1;min-width:0;"><div class="name-label">Kelvin Nunley</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-P"><div class="letter-heading">P<span class="letter-count">7 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">PP</div><div style="flex:1;min-width:0;"><div class="name-label">Pauline Parish</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">AP</div><div style="flex:1;min-width:0;"><div class="name-label">Anthony &amp; LaAndra Peterson</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">FP</div><div style="flex:1;min-width:0;"><div class="name-label">Fred &amp; Jennifer Peterson</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">WP</div><div style="flex:1;min-width:0;"><div class="name-label">Will &amp; Kiah Pettis</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">MP</div><div style="flex:1;min-width:0;"><div class="name-label">Micah Pickens</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">GP</div><div style="flex:1;min-width:0;"><div class="name-label">Glen Price</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">SP</div><div style="flex:1;min-width:0;"><div class="name-label">Sam Putney</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-R"><div class="letter-heading">R<span class="letter-count">1 guest</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">BR</div><div style="flex:1;min-width:0;"><div class="name-label">Beth Roberts</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-S"><div class="letter-heading">S<span class="letter-count">5 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">TS</div><div style="flex:1;min-width:0;"><div class="name-label">Ted Sanders</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">GS</div><div style="flex:1;min-width:0;"><div class="name-label">Gerald &amp; Ingrid Scott</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">FS</div><div style="flex:1;min-width:0;"><div class="name-label">Floyd Smith</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">MS</div><div style="flex:1;min-width:0;"><div class="name-label">Marica Sterling</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">NS</div><div style="flex:1;min-width:0;"><div class="name-label">Natalie Stimpson</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-T"><div class="letter-heading">T<span class="letter-count">3 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">TT</div><div style="flex:1;min-width:0;"><div class="name-label">Trina Terrell-Andrews</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">TT</div><div style="flex:1;min-width:0;"><div class="name-label">Tre Thompson</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">RT</div><div style="flex:1;min-width:0;"><div class="name-label">Rocky Turner</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-V"><div class="letter-heading">V<span class="letter-count">1 guest</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">TV</div><div style="flex:1;min-width:0;"><div class="name-label">Tonya Vaughn</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div><div class="letter-group" id="grp-W"><div class="letter-heading">W<span class="letter-count">7 guests</span></div><div class="name-grid"><button class="name-btn"><div class="name-avatar">EW</div><div style="flex:1;min-width:0;"><div class="name-label">Eric Washington</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">EW</div><div style="flex:1;min-width:0;"><div class="name-label">Erica Washington</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">RW</div><div style="flex:1;min-width:0;"><div class="name-label">Reuben &amp; Marva Washington</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">SW</div><div style="flex:1;min-width:0;"><div class="name-label">Senator Royce West</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">MW</div><div style="flex:1;min-width:0;"><div class="name-label">Mario &amp; Bianca White</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">BW</div><div style="flex:1;min-width:0;"><div class="name-label">Brendan Williams</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button><button class="name-btn"><div class="name-avatar">CW</div><div style="flex:1;min-width:0;"><div class="name-label">Cathleen Williams</div><div class="name-sub">Touch to view · 0:40</div></div><div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"></path></svg></div></button></div></div></div>
 
 <div class="overlay" id="overlay">
   <div class="modal">
@@ -92,15 +93,15 @@ video{width:100%;height:100%;object-fit:cover;display:none;position:absolute;ins
         <div class="modal-name" id="modalName"></div>
         <div class="modal-sub">Thank you video</div>
       </div>
-      <button class="cancel-btn" onclick="closeVideo()">
-        &#x2715;&nbsp; Cancel
+      <button class="cancel-btn" onclick="autoClose()">
+        ✕&nbsp; Cancel
       </button>
     </div>
     <div class="video-area" id="videoArea">
-      <video id="videoEl" playsinline></video>
+      <video id="videoEl" playsinline=""></video>
       <div class="ph-content" id="phContent">
         <div class="ph-icon">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
         </div>
         <p class="ph-name" id="phName"></p>
         <p class="ph-url" id="phUrl"></p>
@@ -113,8 +114,8 @@ video{width:100%;height:100%;object-fit:cover;display:none;position:absolute;ins
   </div>
 </div>
 
-<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <svg viewBox="0 0 16 16"><polyline points="3,11 8,5 13,11"/></svg>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:&#39;smooth&#39;})">
+  <svg viewBox="0 0 16 16"><polyline points="3,11 8,5 13,11"></polyline></svg>
 </button>
 
 <script>
@@ -198,6 +199,20 @@ people.forEach(p=>{const l=p.last[0].toUpperCase();if(!grouped[l])grouped[l]=[];
 const usedLetters=new Set(Object.keys(grouped));
 document.getElementById('groupCount').textContent=usedLetters.size;
 
+function calcAvgDuration(){
+  const withVideo=people.filter(p=>p.duration);
+  if(withVideo.length===0){document.getElementById('avgDuration').textContent='0:40';return;}
+  const totalSecs=withVideo.reduce((sum,p)=>{
+    const parts=p.duration.split(':');
+    return sum+(parseInt(parts[0],10)*60+parseInt(parts[1],10));
+  },0);
+  const avg=Math.round(totalSecs/withVideo.length);
+  const m=Math.floor(avg/60);
+  const s=avg%60;
+  document.getElementById('avgDuration').textContent=m+':'+(s<10?'0':'')+s;
+}
+calcAvgDuration();
+
 const alphaNav=document.getElementById('alphaNav');
 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(letter=>{
   const btn=document.createElement('button');
@@ -212,16 +227,17 @@ Object.keys(grouped).sort().forEach(letter=>{
   const grp=document.createElement('div');
   grp.className='letter-group';grp.id='grp-'+letter;
   const h=document.createElement('div');h.className='letter-heading';
-  const c=grouped[letter].length;
-  h.innerHTML=letter+'<span class="letter-count">'+c+' '+(c===1?'guest':'guests')+'</span>';
+  const cnt=grouped[letter].length;
+  h.innerHTML=letter+'<span class="letter-count">'+cnt+' '+(cnt===1?'guest':'guests')+'</span>';
   grp.appendChild(h);
+
   const grid=document.createElement('div');grid.className='name-grid';
   grouped[letter].forEach(person=>{
     const slug=person.full.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'');
     const btn=document.createElement('button');btn.className='name-btn';
     btn.innerHTML='<div class="name-avatar">'+person.initials+'</div>'
       +'<div style="flex:1;min-width:0;"><div class="name-label">'+person.full+'</div>'
-      +'<div class="name-sub">Click to view video</div></div>'
+      +'<div class="name-sub">Touch to view · '+(person.duration||'0:40')+'</div></div>'
       +'<div class="play-icon"><svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z"/></svg></div>';
     btn.onclick=()=>openVideo(person,slug);
     grid.appendChild(btn);
@@ -247,7 +263,7 @@ function openVideo(person,slug){
     vid.src=person.videoUrl;vid.style.display='block';
     document.getElementById('phContent').style.display='none';
     vid.play().catch(()=>{});
-    vid.onended=()=>closeVideo();
+    vid.onended=()=>autoClose();
   } else {
     vid.style.display='none';
     document.getElementById('phContent').style.display='flex';
@@ -257,11 +273,11 @@ function openVideo(person,slug){
     const rem=Math.max(0,DURATION-elapsed);
     document.getElementById('progressFill').style.width=Math.round((elapsed/DURATION)*100)+'%';
     document.getElementById('timerLbl').textContent='0:'+pad(rem)+' remaining';
-    if(elapsed>=DURATION)closeVideo();
+    if(elapsed>=DURATION)autoClose();
   },1000);
 }
 
-function closeVideo(){
+function dismissOverlay(){
   clearInterval(timer);
   const vid=document.getElementById('videoEl');
   vid.pause();vid.src='';vid.style.display='none';
@@ -271,8 +287,18 @@ function closeVideo(){
   document.getElementById('progressFill').style.width='0%';
 }
 
-window.addEventListener('keydown',e=>{if(e.key==='Escape')closeVideo();});
+function closeVideo(){
+  dismissOverlay();
+}
+
+function autoClose(){
+  dismissOverlay();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+window.addEventListener('keydown',e=>{if(e.key==='Escape')autoClose();});
 window.addEventListener('scroll',()=>{document.getElementById('backTop').classList.toggle('show',window.scrollY>400);});
 </script>
-</body>
-</html>
+
+
+</body></html>
